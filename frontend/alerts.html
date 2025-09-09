@@ -72,36 +72,39 @@
     <p>Built with ❤️ to keep communities safe.</p>
   </footer>
 
+  <!-- REPORT FLOOD MODAL -->
+  <!-- Note: The id="modal-overlay", id="report-modal", and id="close-modal-btn" are crucial -->
+  <div id="modal-overlay" class="hidden">
+      <div id="report-modal">
+          <div class="modal-header">
+              <h2>Report a Flood</h2>
+              <button id="close-modal-btn">&times;</button>
+          </div>
+          <form id="report-form">
+              <div class="form-group">
+                  <label for="location">Location (e.g., City, State)</label>
+                  <input type="text" id="location" placeholder="Enter the flood location" required>
+              </div>
+              <div class="form-group">
+                  <label for="severity">Severity Level</label>
+                  <select id="severity" required>
+                      <option value="" disabled selected>-- Select Severity --</option>
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                  </select>
+              </div>
+               <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea id="description" rows="3" placeholder="Provide a brief description (optional)"></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Submit Report</button>
+          </form>
+      </div>
+  </div>
+
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="script.js"></script>
-  <div id="modal-overlay" class="hidden">
-    <div class="report-modal">
-      <div class="modal-header">
-        <h2>Report a flood</h2>
-        <button id="close-modal-btn">&times;</button>
-      </div>
-      <form id="report-form">
-        <div class="form-group">
-          <label for="location">Location (e.g.,City,State)</label>
-          <input type="text" id="location" placeholder="enter the flood location" required>
-        </div>
-        <div class="form-group">
-          <label for="severity">Severity Level</label>
-          <select id="severity" required>
-            <option value="" disabled selected>--Select Severity</option>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="description">Description</label>
-          <textarea id="description" rows="3" placeholder="provide a brief description (optional)"></textarea>
-        </div>
-      </form>
-
-    </div>
-  </div>
 </body>
 </html>

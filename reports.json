@@ -1,0 +1,64 @@
+{
+  "reports": [
+    {
+      "location": "Mumbai, Maharashtra",
+      "severity": "High",
+      "description": "Sever waterlogging near gateway of india",
+      "coords": [
+        19.076,
+        72.8777
+      ],
+      "radius": 50000
+    },
+    {
+      "location": "Chennai, Tamil Nadu",
+      "severity": "Medium",
+      "description": "Moderate flooding reported in T. Nagar",
+      "coords": [
+        13.0827,
+        80.2707
+      ],
+      "radius": 30000
+    },
+    {
+      "location": "Kolkata, West Bengal",
+      "severity": "Low",
+      "description": "Minort flooding reported in T Nagar.",
+      "coords": [
+        22.5726,
+        88.3639
+      ],
+      "radius": 15000
+    },
+    {
+      "location": "amritsar",
+      "severity": "Medium",
+      "description": "updated 10hr ago"
+    },
+    {
+      "location": "solan",
+      "severity": "High",
+      "description": "n"
+    },
+    {
+      "location": "amritsar, punjab",
+      "severity": "Low",
+      "description": "no",
+      "coords": [
+        31.6356659,
+        74.8787496
+      ],
+      "radius": 10000
+    },
+    {
+      "location": "manali",
+      "severity": "High",
+      "description": "loads of",
+      "coords": [
+        32.2454608,
+        77.1872926
+      ],
+      "radius": 10000
+    }
+  ]
+}

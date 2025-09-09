@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Reports - FloodWatch</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-brand">
+            <img src="images/logo.png" alt="FloodWatch Logo">
+            <h1>FloodWatch</h1>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="alerts.html">Alerts</a></li>
+            <li><a href="community.html" class="active">Community</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </header>
+
+    <main class="container">
+        <div class="community-header">
+            <h2>Community Flood Reports</h2>
+            <p>See on-the-ground reports from users. Share what you're seeing to help others.</p>
+        </div>
+
+        <section class="card submission-card">
+            <h3>Share a Report</h3>
+            <form id="community-report-form">
+                <div class="form-group">
+                    <label for="report-location">Location</label>
+                    <input type="text" id="report-location" placeholder="e.g. Near Solan Bus Stand" required>
+                </div>
+                <div class="form-group">
+                    <label for="report-image">Upload a Photo</label>
+                    <input type="file" id="report-image" accept="image/*" required>
+                    <!-- image preview will be shown here -->
+                    <img id="image-preview" class="hidden" alt="Image preview">
+                </div>
+                <div class="form-group">
+                    <label for="report-description">Description</label>
+                    <textarea id="report-description" rows="4" placeholder="Describe the situation... (eg., 'water is knee-deep on the main road')" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Post Report</button>
+
+            </form>
+        </section>
+        <section class="community-feed">
+            <h3>Latest Reports</h3>
+            <div id="feed-container" class="feed-grid">
+                <!-- community reports will be dynamically inserted here by javascript -->
+                 <p>No community reports yet. Be the first to share</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2025 FloodWatch. All rights reserved.</p>
+        <p>Built with ❤️ to keep communities safe.</p>
+    </footer>
+     <!-- New JavaScript file for this page -->
+    <script src="community.js"></script>
+</body>
+</html>

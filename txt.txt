@@ -1,0 +1,135 @@
+Why it was deleted: This code was also tied to the original, static HTML. Since our new system dynamically creates the alert items in the sidebar whenever the page loads, we will need a new, smarter way to make those new items clickable. We haven't rebuilt this feature yet, which is why it was removed for now to prevent it from causing errors.
+
+In short, we performed a "brain transplant." We removed the old, static, hard-coded data and all the logic that depended on it, and replaced it with a new system that dynamically fetches live data from our server.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Leaflet.js is our set of specialized, professional kitchen appliances. It gives us the "oven" (L.map), the "cookie cutters" (L.marker, L.circle), and the "decorating tools" (L.icon). We don't need to know how they work internally, we just need to know how to use them.
+
+Our script.js code is the recipe. We write the instructions that decide when to use the oven, which cookie cutter to use, and what color to make the decorations.
+
+Let's break down which is which in our project:
+
+Leaflet's Toolkit (The "L" object)
+These are the powerful, pre-built functions provided by the Leaflet library. You can always spot them because they start with a capital L.
+
+L.map(...): "Create a new map." (Our oven)
+
+L.tileLayer(...): "Paint the map with this style." (The background image)
+
+L.marker(...): "Create a pin marker." (A cookie cutter)
+
+L.circle(...): "Create a circle." (Another cookie cutter)
+
+L.icon(...): "Define a custom design for a marker." (A decorating tool)
+
+.addTo(map): "Place this item onto the map." (Putting the cookies on the baking sheet)
+
+.bindPopup(...): "Attach this message to a marker."
+
+Our Custom Recipe (Our Functions)
+These are the functions that we wrote to control the logic of our application. They are the "brains" of FloodWatch. They often call Leaflet's functions to get the job done.
+
+fetchReportsAndDisplay(): Our instruction to get all the reports from the server and start the process of displaying them.
+
+addAlertToList(...): Our instruction for how to build a new HTML <div> for the sidebar. This uses pure JavaScript (document.createElement).
+
+addReportToMap(...): Our instruction that says, "For this report, decide which color to use, then tell Leaflet to use its L.marker and L.circle tools to draw it."
+
+toggleModal(): Our instruction for how to show or hide the report form.
+
+The functions inside addEventListener: Our instructions for what to do when a user clicks a button or submits the form.
+
+So, in short: We write the overall plan, and Leaflet provides the specialized, high-powered tools to execute all the map-related parts of that plan. You've correctly identified the relationship between a library and your own custom code.
+
+
+
+GET AND POST REQUESTSSS-------------------------------------------------------------------------------------------
+
+
+
+The GET Request: "Show me the saved reports"
+This happens automatically when you first open or refresh the alerts.html page. Its entire job is to read data.
+
+The Journey:
+
+The Trigger (Frontend - script.js):
+The page finishes loading. The very last line of your script, fetchReportsAndDisplay();, runs. This is the starting pistol.
+
+The Ask (Frontend - script.js):
+Inside fetchReportsAndDisplay, this line sends the request:
+const response = await fetch('http://localhost:3000/api/reports');
+
+This is your browser sending a "postcard" (GET is the default method) to your server. The postcard simply says, "Please send me everything you have at the /api/reports address."
+
+The Response (Backend - server.js):
+Your server, which is always listening, catches this request with its GET route:
+app.get('/api/reports', (req, res) => { ... });
+
+This is the "librarian" at the information desk.
+
+The Action (Backend - server.js):
+The librarian's instructions are to:
+
+Read the entire reports.json file (fs.readFile).
+
+Translate the file's text into a usable JavaScript object (JSON.parse(data)).
+
+Send this complete object back to the frontend (res.json(...)).
+
+The Result (Frontend - script.js):
+The fetch call receives the list of reports. The code inside fetchReportsAndDisplay then:
+
+Clears the old list (alertsList.innerHTML = '';).
+
+Loops through the reports it just received from the server.
+
+For each report, it calls addAlertToList() and addReportToMap() to build the dynamic UI.
+
+In short: The GET request populates your page with all the data that has been saved in the past.
+
+The POST Request: "Save this new report"
+This only happens when a user fills out the form and clicks "Submit Report." Its entire job is to create new data.
+
+The Journey:
+
+The Trigger (Frontend - script.js):
+The user clicks "Submit." The reportForm.addEventListener('submit', ...) function fires.
+
+The Ask (Frontend - script.js):
+The code gathers the form data into an object (reportData) and then sends it:
+fetch('http://localhost:3000/api/reports', { method: 'POST', body: JSON.stringify(reportData) })
+
+This is your browser putting the reportData into a "sealed envelope" (POST method, data in the body) and sending it to the server.
+
+The Response (Backend - server.js):
+Your server catches this specific type of request with its POST route:
+app.post('/api/reports', async (req, res) => { ... });
+
+This is the "clerk" at the processing desk.
+
+The Action (Backend - server.js):
+The clerk's detailed instructions are to:
+
+Open the envelope and get the new report (const newReport = req.body).
+
+Magic Step: Call the OpenCage API to get coordinates for the report's location.
+
+Add those coordinates to the newReport object.
+
+Read the current reports.json file.
+
+Modify the list by adding the complete newReport to it.
+
+Write the new, longer list back to the reports.json file, saving it permanently.
+
+Send back a "Success!" confirmation slip (res.status(201).json(...)).
+
+The Result (Frontend - script.js):
+The fetch call's .then() block runs. Knowing the server was successful, it:
+
+Calls addAlertToList() to instantly add the new report to the top of the sidebar.
+
+Closes the modal and resets the form. (We'll later add a call to addReportToMap here as well).
+
+In short: The POST request takes user input, adds coordinates to it, saves it permanently, and confirms that the job is done.

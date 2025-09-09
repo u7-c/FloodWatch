@@ -1,0 +1,25 @@
+{
+  "name": "floodwatch",
+  "version": "1.0.0",
+  "description": "an alerts app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/u7-c/FloodWatch.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/u7-c/FloodWatch/issues"
+  },
+  "homepage": "https://github.com/u7-c/FloodWatch#readme",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}

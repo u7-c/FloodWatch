@@ -1,3 +1,6 @@
+/* ======================== */
+/* BASE & LAYOUT STYLES     */
+/* ======================== */
 * {
     margin: 0;
     padding: 0;
@@ -5,35 +8,33 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f6f8;
-    color: #222;
-    
-}
-body {
-  display: flex;              /* turns body into a flex container */
-  flex-direction: column;     /* stacks children vertically (header, main, footer) */
-  min-height: 100vh;           /* makes body fill the full viewport height */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f6f8; /* A clean, light grey background */
+    color: #333; /* Darker text for better readability */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.6; /* Better line spacing for text */
 }
 
 main {
-  flex: 1;                     /* tells main to grow and take up remaining space */
+    flex: 1; /* Allows main content to grow and fill available space */
+    padding: 0; /* Let sections control their own padding */
+    margin: 0;
 }
 
-header,
-main,
-footer {
-    padding: 20px;
-}
-
-/* NAVBAR */
+/* ======================== */
+/* NAVBAR STYLES            */
+/* ======================== */
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 80px;
+    height: 70px; /* Slightly shorter for a modern feel */
     padding: 0 40px;
-    background-color: #16375b;
+    background-color: #ffffff; /* Clean white navbar */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07); /* Subtle shadow for depth */
+    border-bottom: 1px solid #e9ecef;
 }
 
 .navbar-brand {
@@ -42,6 +43,7 @@ footer {
     gap: 10px;
 }
 
+/* THIS FIXES THE HUGE LOGO PROBLEM */
 .navbar-brand img {
     height: 45px;
     width: auto;
@@ -50,206 +52,465 @@ footer {
 
 .navbar-brand h1 {
     font-size: 1.5rem;
-    color: white;
+    color: #1d3557; /* Using our brand's dark blue */
 }
 
 .navbar ul {
     display: flex;
-    gap: 25px;
+    gap: 30px; /* More space between links */
     list-style: none;
 }
 
 .navbar ul li a {
-    color: white;
+    color: #1d3557; /* Dark blue links */
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600; /* Bolder font */
+    padding-bottom: 5px;
+    transition: color 0.2s ease;
 }
 
 .navbar ul li a:hover {
-    text-decoration: underline;
+    color: #e63946; /* Brand red for hover */
+    text-decoration: none;
 }
 
 .navbar ul li a.active {
-    border-bottom: 2px solid white;
-    padding-bottom: 3px;
+    border-bottom: 3px solid #e63946; /* Thicker, bolder active indicator */
+    color: #e63946;
 }
 
-/* MAIN */
-main {
-    max-width: 900px;
-    margin: 20px auto;
+/* ======================== */
+/* HERO SECTION             */
+/* ======================== */
+.hero {
+    background: linear-gradient(rgba(29, 53, 87, 0.85), rgba(29, 53, 87, 0.85)), url('images/flood2.jpg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
 }
 
-.alert-box {
-    background-color: white;
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-btn {
+    background-color: #e63946;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    display: inline-block;
+}
+
+.hero-btn:hover {
+    background-color: #d62828;
+    transform: translateY(-2px);
+}
+
+
+/* ======================== */
+/* HOMEPAGE INFO SECTIONS   */
+/* ======================== */
+.info-section {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.info-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: #1d3557;
+}
+
+.alternate-bg {
+    background-color: #ffffff;
+    border-radius: 12px;
+}
+
+/* How It Works Section */
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.step-card {
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.alert-box h2 {
+.step-card h3 {
+    color: #e63946;
     margin-bottom: 10px;
+    font-size: 1.5rem;
 }
 
-.alert-box button {
+/* Key Features Section */
+.features-container {
+     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background-color: #f1faee; /* Light Cream */
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.feature-card h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #1d3557;
+    font-size: 1.2rem;
+}
+
+/* Adding emoji icons before the feature titles */
+.feature-card h4::before {
+    display: inline-block;
+    margin-right: 10px;
+}
+.feature-card:nth-child(1) h4::before { content: '📍'; }
+.feature-card:nth-child(2) h4::before { content: '🤝'; }
+.feature-card:nth-child(3) h4::before { content: '🔔'; }
+
+
+/* Safety Tips Section */
+.safety-tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 700px;
+    text-align: left;
+}
+
+.safety-tips-list li {
+    background-color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+    border-left: 5px solid #457b9d; /* Accent color */
+    font-weight: 500;
+}
+
+
+/* ======================== */
+/* ALERTS PAGE GRID & MAP   */
+/* ======================== */
+.alerts-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px; /* A bit more gap */
+    max-width: 1200px; /* Wider for a better feel */
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+#map {
+    height: 600px; /* Taller map */
+    width: 100%;
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* ======================== */
+/* PANEL & ALERTS LIST      */
+/* ======================== */
+.panel {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.panel-header h3 {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 1.4rem;
+    color: #1d3557;
+}
+
+.alert-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px; /* Add padding for a better feel */
+    margin: 0 -15px 15px; /* Use negative margin to align with padding */
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.alert-item:hover {
+    background-color: #f8f9fa; /* Light hover effect */
+}
+
+.badge {
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+    flex-shrink: 0;
+}
+
+.badge.low { background-color: #2a9d8f; }
+.badge.medium { background-color: #f4a261; }
+.badge.high { background-color: #e76f51; }
+
+.alert-title {
+    font-weight: 600; /* Slightly bolder */
+    font-size: 1.1rem;
+    margin-bottom: 3px;
+    color: #333;
+}
+
+.alert-meta {
+    font-size: 0.85rem;
+    color: #6c757d; /* Softer grey */
+}
+
+/* ======================== */
+/* MODAL & FORM STYLES      */
+/* ======================== */
+#modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#modal-overlay.active {
+    display: flex;  /* only show when active */
+}
+
+#report-modal {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 480px;
+    z-index: 1001;
+}   
+
+.modal-header h2 {
+    margin: 0;
+    color: #1d3557;
+}
+
+#close-modal-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.2s ease;
+}
+#close-modal-btn:hover {
+    color: #333;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px; /* More space */
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #457b9d;
+    box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.2);
+}
+
+
+#report-flood-btn {
+    background-color: #1d3557;
+    color: white;
+    border: none;
+    padding: 10px 15px; /* More padding */
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#report-flood-btn:hover {
+    background-color: #457b9d;
+    transform: translateY(-2px);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px; /* A bigger, more important button */
     background-color: #e63946;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.alert-box button:hover {
+.submit-btn:hover {
     background-color: #d62828;
+    transform: translateY(-2px);
 }
 
-/* FOOTER */
+/* ======================== */
+/* FOOTER STYLES            */
+/* ======================== */
 footer {
     background-color: #1d3557;
     color: white;
     text-align: center;
-    padding: 15px;
-    margin-top: 40px;
+    padding: 30px;
+    margin-top: auto;
 }
 
-footer p {
-    margin: 5px 0;
-    font-size: 0.9rem;
+/* ======================== */
+/* ABOUT PAGE & OTHERS      */
+/* ======================== */
+.card {
+    background: white;
+    border-radius: 12px; /* More rounded */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    padding: 40px; /* More padding */
+    max-width: 800px;
+    margin: 40px auto;
 }
-.hero{
-  background: linear-gradient(rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.8)),
-              url('images/flood2.jpg') center/cover no-repeat;
-  color: white;
-  text-align: center;
-  padding: 80px 20px;           
-}
-
-.hero-content{
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.hero h1{
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
 }
 
-.hero p{
-  font-size: 1.2rem;
-  margin-bottom: 25px;
+.community-header{
+    text-align: center;
+    margin-bottom: 30px;
 }
-.hero-btn{
-  background-color: #e63946;
-  color: white;
-  padding: 12px 25px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s ease;
+.community-header h2{
+    font-size: 2.5rem;
+    color: #1d3557;
 }
-
-.hero-btn:hover {
-  background-color: #d62828;
+.community-header p{
+    font-size: 1.1rem;
+    color: #6c757d; 
 }
-.card{
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  padding: 20px;
-  margin: 20px;
+.submission-card {
+    margin-bottom: 40px;
 }
-#map {
-  height: 500px;
-  width: 100%;
-  border-radius: 8px;
-  margin-top: 15px;
+.submission-card h3{
+    font-size: 1.6rem;
+    color: #1d3557;
+    text-align: center;
+    margin-bottom: 25px;
 }
-.alerts-grid{
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-  max-width: 1100px;
-  margin: 20px auto;
+#image-preview {
+    max-width: 100%;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
-.panel {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.community-feed h3{
+    font-size: 1.8rem;
+    color: #1d3557;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
 }
-.panel h3 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
-}
-.alert-item{
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #eee;
-}
-.alert-item:last-child{
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-.badge{
-  padding: 5px 10px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: white;
-  flex-shrink: 0;
-}
-.badge.low {
-    background-color: #2a9d8f; /* Teal */
-}
-.badge.medium {
-    background-color: #f4a261; /* Orange */
-}
-.badge.high {
-    background-color: #e76f51; /* Red-Orange */
+.feed-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
 }
 
-.alert-title {
-  font-weight: bold;
-  margin-bottom: 3px;
+.report-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
-.alert-meta {
-  font-size: 0.85rem;
-  color: #666;
+.report-card img{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
 }
-.panel-header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
+.report-card-content{
+    padding: 25px;
 }
-.panel-header h3 {
-  margin: 0;
-  padding: 0;
-  border: none;
+.report-card-location {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1d3557;
+    margin-bottom: 10px;
 }
-
-#report-flood-btn {
-    background-color: #1d3557; /* Dark blue from header */
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s ease;
-}
-#report-flood-btn:hover {
-    background-color: #457b9d; /* Lighter blue */
+.report-card-description {
+    font-size: 1rem;
+    color: #333;
 }
 
-
-
+.report-card-timestamp {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
