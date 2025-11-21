@@ -1,0 +1,5 @@
+node_modules/
+floodwatch.db
+backups/
+scripts/*.log
+scripts/*.json
